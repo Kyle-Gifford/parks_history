@@ -1,13 +1,19 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = 'https://en.wikipedia.org/wiki/Globe_Life_Field'
-# url = 'https://en.wikipedia.org/wiki/Yankee_Stadium'
-result = requests.get(url)
-html_doc = result.text
+park_name = "Yankee_Stadium"
+park_name = "Globe_Life_Field"
 
-# with open("glf.txt") as file:
-#     html_doc = file.read()
+
+# TODO uncomment dev mode
+# url = 'https://en.wikipedia.org/wiki/' + park_name
+# result = requests.get(url)
+# html_doc = result.text
+
+# TODO remove dev mode from file
+park_file = park_name + ".txt"
+with open(park_file) as file:
+    html_doc = file.read()
 
 
 loc = html_doc.find('<h2><span class="mw-headline" id="History">')
