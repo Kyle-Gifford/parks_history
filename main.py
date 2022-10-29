@@ -1,30 +1,40 @@
+PORT = 8080 # use port of your choice
+
 import requests
 from bs4 import BeautifulSoup
-
-park_name = "Yankee_Stadium"
-park_name = "Globe_Life_Field"
-
-
-# TODO uncomment dev mode
-# url = 'https://en.wikipedia.org/wiki/' + park_name
-# result = requests.get(url)
-# html_doc = result.text
-
-# TODO remove dev mode from file
-park_file = park_name + ".txt"
-with open(park_file) as file:
-    html_doc = file.read()
+from flask import Flask, Response
+import json
 
 
-loc = html_doc.find('<h2><span class="mw-headline" id="History">')
-loc2 = html_doc.find('<h2>', loc+1)
-html_doc = html_doc[loc:loc2]
+app = Flask(__name__)
 
-soup = BeautifulSoup(html_doc, 'html.parser')
+@app.route('/<string:park_name>')
+def get_history(park_name):
+    url = 'https://en.wikipedia.org/wiki/' + park_name
+    response = requests.get(url)
+    
+    # return 404 if not found
+    if response.status_code != 200:
+        return Response(status=response.status_code)
+    html_doc = response.text
 
-all_p = soup.find_all('p')
+    beginning = html_doc.find('<h2><span class="mw-headline" id="History">')
+    end = html_doc.find('<h2>', beginning+1)
+    html_doc = html_doc[beginning:end]
+    
+    parsed_html = BeautifulSoup(html_doc, 'html.parser')
+    
+    all_paragraphs = parsed_html.find_all('p')
+    
+    history = ""
+    for para in all_paragraphs:
+        history += '\n'
+        history += para.get_text()
 
-output = ""
-for para in all_p:
-    output += para.get_text()
-print(output)
+    dny = {"history": history[1:]} # remove initial newline
+
+    return json.dumps(dny)
+
+
+if __name__ == '__main__':
+   app.run(host="0.0.0.0", port = PORT)
