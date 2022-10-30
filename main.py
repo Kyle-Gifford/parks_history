@@ -1,10 +1,13 @@
 PORT = 8080 # use port of your choice
+HOST = 'localhost'
 
 try:
-    from credentials import chosen_port
+    from credentials import *
     PORT = chosen_port
+    HOST = chosen_host
 except:
     PORT = 8080
+    HOST = 'localhost'
 
 import requests
 from bs4 import BeautifulSoup
@@ -57,4 +60,4 @@ def get_history(search_term):
 
 
 if __name__ == '__main__':
-   app.run(host="0.0.0.0", port = PORT)
+   app.run(host=HOST, port=PORT, debug=True)
