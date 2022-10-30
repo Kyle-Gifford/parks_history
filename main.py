@@ -1,5 +1,11 @@
 PORT = 8080 # use port of your choice
 
+try:
+    from credentials import chosen_port
+    PORT = chosen_port
+except:
+    PORT = 8080
+
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask, Response

@@ -9,3 +9,4 @@ __pycache__
 .toignore
 scratch.py
 credentials.py
+.localvenv
