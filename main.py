@@ -1,3 +1,11 @@
+# github URL:
+# https://github.com/Kyle-Gifford/parks_history
+
+
+# public facing URL:
+# https://parkshistory.chichone.repl.co/ParkNameHere
+
+
 PORT = 8080 # use port of your choice
 HOST = 'localhost'
 
