@@ -1,11 +1,16 @@
 # parks_history
-This is a web scraper api that retreives history from wikipedia pages
+This is a web scraper API that retreives history from wikipedia pages. 
 
 ## How to request data:
 The calling process will make an http request using the url of the process followed by the name of a ballpark
 for example if the api was running on http://localhost:64123, the desired program or individual would perform an http GET request to:
 http://localhost:64123/stadium name
 e.g. http://localhost:64123/Coors_Field
+<br>
+This API is also currently hosted at https://parkshistory.chichone.repl.co<br>
+An example usage of the hosted API is to perform a GET request on https://parkshistory.chichone.repl.co/<br>
+With a desired ballpark as the URL path.<br>
+e.g. https://parkshistory.chichone.repl.co/fenway park
 
 ## How to receive data:
 Data is sent as an HTTP response with JSON data. The only attribute of the data is "history" which contains a string of the history for a given page. This json data may be parsed to be of further use.

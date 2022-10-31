@@ -3,7 +3,8 @@ import json
 
 search_term = "petco park"
 
-search_url = 'http://host:port/{}'.format(search_term)
+# search_url = 'http://host:port/{}'.format(search_term)
+search_url = 'http://localhost:64223/{}'.format(search_term)
 
 try:
     response = requests.get(search_url)
