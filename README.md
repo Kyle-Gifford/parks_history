@@ -7,7 +7,7 @@ for example if the api was running on http://localhost:64123, the desired progra
 http://localhost:64123/stadium name
 e.g. http://localhost:64123/Coors_Field
 <br><br>
-# Using hosted API
+### Using hosted API
 This API is also currently hosted at https://parkshistory.chichone.repl.co<br>
 An example usage of the hosted API is to perform a GET request on https://parkshistory.chichone.repl.co/<br>
 With a desired ballpark as the URL path.<br>
