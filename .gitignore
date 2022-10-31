@@ -10,3 +10,4 @@ __pycache__
 scratch.py
 credentials.py
 .localvenv
+.localscratch.txt
